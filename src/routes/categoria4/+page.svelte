@@ -40,14 +40,14 @@
 			tamanhos: ['M','G'],
 			cores: ['Preto com Nude'], 
 		},
-        {
-			nome: 'Body de renda forrado sem bojo',
-			imagem: '/images/p6.jpg',
-			preco: 'R$ 268,00',
-			tamanhos: ['M'],
-			cores: ['Capuccino'],
-		}                          
-
+		{
+			nome: 'Saída de Praia Kimono',
+			imagem: '/images/p5.jpg',
+			preco: 'R$ 320,00',
+			tamanhos: ['U'],
+			cores: ['Atlantis'], 
+		},
+      
 	];
 
 	const tamanhosDisponiveis = [...new Set(produtos.flatMap((produto) => produto.tamanhos))];

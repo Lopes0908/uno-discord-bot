@@ -53,6 +53,34 @@
 			preco: 'R$ 140,00',
 			tamanhos: ['G'],
 			cores: ['Preto'],
+		},
+	{
+			nome: 'Sutiã avulso, alça reforçada ',
+			imagem: '/images/fa7.jpg',
+			preco: 'R$ 140,00',
+			tamanhos: ['G'],
+			cores: ['Azul marinho'],
+		},
+		{
+			nome: 'Sutiã avulso, alça reforçada ',
+			imagem: '/images/fa8.jpg',
+			preco: 'R$ 140,00',
+			tamanhos: ['G'],
+			cores: ['Chocolate'],
+		},
+		{
+			nome: 'Sutiã avulso, alça reforçada ',
+			imagem: '/images/fa9.jpg',
+			preco: 'R$ 140,00',
+			tamanhos: ['G'],
+			cores: ['Nude'],
+		},
+		{
+			nome: 'Sutiã avulso, alça reforçada ',
+			imagem: '/images/fa10.jpg',
+			preco: 'R$ 140,00',
+			tamanhos: ['G'],
+			cores: ['Divino'],
 		}
 	];
 

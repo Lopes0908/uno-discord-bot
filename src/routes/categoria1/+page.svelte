@@ -42,13 +42,6 @@
 			cores: ['Nude com preto'],
 		},
 		{
-			nome: 'Conjunto com laços',
-			imagem: '/images/f5.jpg',
-			preco: 'R$ 175,00',
-			tamanhos: ['G'],
-			cores: ['Preto'],
-		},
-		{
 			nome: 'Conjunto croped',
 			imagem: '/images/f6.jpg',
 			preco: 'R$ 195,00',
