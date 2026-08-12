@@ -28,13 +28,20 @@
 		}
 	];
 
+	const tamanhosDisponiveis = [...new Set(produtos.flatMap((produto) => produto.tamanhos))];
+	const coresDisponiveis = [...new Set(produtos.flatMap((produto) => produto.cores.map((cor) => cor.trim())))];
+
 	let selectedTamanho = '';
 	let selectedCor = '';
 
 	function filterProdutos() {
 		return produtos.filter((produto) => {
-			const tamanhoMatch = selectedTamanho ? produto.tamanhos.includes(selectedTamanho) : true;
-			const corMatch = selectedCor ? produto.cores.includes(selectedCor) : true;
+			const tamanhoMatch = selectedTamanho
+				? produto.tamanhos.some((tamanho) => tamanho.toLowerCase() === selectedTamanho.toLowerCase())
+				: true;
+			const corMatch = selectedCor
+				? produto.cores.some((cor) => cor.trim().toLowerCase() === selectedCor.trim().toLowerCase())
+				: true;
 			return tamanhoMatch && corMatch;
 		});
 	}
@@ -58,13 +65,17 @@
 		<label for="tamanho" style="color: black;">Selecionar Tamanho:</label>
 		<select id="tamanho" bind:value={selectedTamanho}>
 			<option value="">Todos</option>
-			<!-- Adicione mais opções conforme necessário -->
+			{#each tamanhosDisponiveis as tamanho}
+				<option value={tamanho}>{tamanho}</option>
+			{/each}
 		</select>
 
 		<label for="cor" style="color: black;">Selecionar Cor:</label>
 		<select id="cor" bind:value={selectedCor}>
 			<option value="">Todos</option>
-			<!-- Adicione mais opções conforme necessário -->
+			{#each coresDisponiveis as cor}
+				<option value={cor}>{cor}</option>
+			{/each}
 		</select>
 	</div>
 

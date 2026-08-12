@@ -56,6 +56,13 @@
 			cores: ['Submarino'],
 		}, 
 		{
+			nome: 'Conjunto em renda ',
+			imagem: '/images/f7.jpg',
+			preco: 'R$ 186,00',
+			tamanhos: ['G'],
+			cores: ['Divino'],
+		},
+		{
             nome: 'Conjunto reforçado',
 			imagem: '/images/f8.jpg',
 			preco: 'R$ 198,00',
@@ -68,6 +75,13 @@
 			preco: 'R$ 198,00',
 			tamanhos: ['G'],
 			cores: ['Preto'],
+		},
+		{
+			nome: 'Conjunto sem bojo com aro ',
+			imagem: '/images/f10.jpg',
+			preco: 'R$ 196,00',
+			tamanhos: ['M'],
+			cores: ['Caribe'],
 		},
 		{
             nome: 'Conjunto; básico com laterais largas',
@@ -109,6 +123,13 @@
 			imagem: '/images/f16.jpg',
 			preco: 'R$ 188,00',
 			tamanhos: ['G','M'],
+			cores: ['Preto'],
+		},
+		{
+			nome: 'Conjunto sem bojo com aro',
+			imagem: '/images/f17.jpg',
+			preco: 'R$ 196,00',
+			tamanhos: ['M'],
 			cores: ['Preto'],
 		},
 		{
@@ -201,16 +222,58 @@
 			preco: 'R$ 220,00',
 			tamanhos: ['M'],
 			cores: ['Preto'],
+		},
+		{
+			nome: 'Conjunto com bojo três peças',
+			imagem: '/images/f31.jpg',
+			preco: 'R$ 198,00',
+			tamanhos: ['M'],
+			cores: ['Azul marinho'],
+		},
+		{
+			nome: 'Conjunto básico',
+			imagem: '/images/f32.jpg',
+			preco: 'R$ 180,00',
+			tamanhos: ['G'],
+			cores: ['Chocolate'],
+		},
+		{
+			nome: 'Conjunto básico',
+			imagem: '/images/f33.jpg',
+			preco: 'R$ 180,00',
+			tamanhos: ['M','G'],
+			cores: ['Nude'],
+		},
+		{
+			nome: 'Biquíni cortinão com detalhes em argolas ',
+			imagem: '/images/f34.jpg',
+			preco: 'R$ 240,00',
+			tamanhos: ['M'],
+			cores: ['Verde oliva'],
+		},
+		{
+			nome: 'Conjunto de tule bordado ',
+			imagem: '/images/f35.jpg',
+			preco: 'R$ 180,00',
+			tamanhos: ['M'],
+			cores: ['Branco com verde'],
 		}
 	];
+
+	const tamanhosDisponiveis = [...new Set(produtos.flatMap((produto) => produto.tamanhos))];
+	const coresDisponiveis = [...new Set(produtos.flatMap((produto) => produto.cores.map((cor) => cor.trim())))];
 
 	let selectedTamanho = '';
 	let selectedCor = '';
 
 	function filterProdutos() {
 		return produtos.filter((produto) => {
-			const tamanhoMatch = selectedTamanho ? produto.tamanhos.includes(selectedTamanho) : true;
-			const corMatch = selectedCor ? produto.cores.includes(selectedCor) : true;
+			const tamanhoMatch = selectedTamanho
+				? produto.tamanhos.some((tamanho) => tamanho.toLowerCase() === selectedTamanho.toLowerCase())
+				: true;
+			const corMatch = selectedCor
+				? produto.cores.some((cor) => cor.trim().toLowerCase() === selectedCor.trim().toLowerCase())
+				: true;
 			return tamanhoMatch && corMatch;
 		});
 	}
@@ -234,26 +297,17 @@
 		<label for="tamanho" style="color: black;">Selecionar Tamanho:</label>
 		<select id="tamanho" bind:value={selectedTamanho}>
 			<option value="">Todos</option>
-			<option value="M">M</option>
-			<option value="G">G</option>
-			<option value="GG">GG</option>
-			<option value="48">48</option>
-			 <!-- Adicione mais opções conforme necessário -->
+			{#each tamanhosDisponiveis as tamanho}
+				<option value={tamanho}>{tamanho}</option>
+			{/each}
 		</select>
 
 		<label for="cor" style="color: black;">Selecionar Cor:</label>
 		<select id="cor" bind:value={selectedCor}>
 			<option value="">Todas</option>
-			<option value="Divino">Divino</option>
-			<option value="Nude">Nude</option>
-			<option value="Nude com preto">Nude com preto</option>
-			<option value="Preto">Preto</option>
-			<option value="Submarino">Submarino</option>
-			<option value="Tâmisa">Tâmisa</option>
-			<option value="Capuccino">Capuccino</option>
-			<option value="Menta com rosa">Menta com rosa</option>
-			<option value="Vermelho">Vermelho</option>
-			 <!-- Adicione mais opções conforme necessário -->
+			{#each coresDisponiveis as cor}
+				<option value={cor}>{cor}</option>
+			{/each}
 		</select>
 	</div>
 
